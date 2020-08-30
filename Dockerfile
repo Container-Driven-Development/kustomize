@@ -13,4 +13,6 @@ WORKDIR /workdir
 
 ENTRYPOINT [ "/usr/local/bin/kustomize" ]
 
+RUN apk add git --no-cache
+
 COPY --from=fetcher /usr/local/bin/kustomize /usr/local/bin/kustomize
