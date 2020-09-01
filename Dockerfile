@@ -1,6 +1,7 @@
 FROM alpine:3.12.0 as fetcher
 
 ARG KUSTOMIZE_VERSION=v3.8.1
+ARG KUSTIMIZE_HELM_PLUGIN=v0.9.0-beta
 
 RUN wget -O- https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/${KUSTOMIZE_VERSION}/kustomize_${KUSTOMIZE_VERSION}_linux_amd64.tar.gz | tar xvz -C /usr/local/bin/
 
@@ -8,7 +9,7 @@ RUN wget -O- https://github.com/kubernetes-sigs/kustomize/releases/download/kust
 RUN chmod +x /usr/local/bin/kustomize
 
 RUN mkdir -p /root/.config/kustomize/plugin/helm.kustomize.mgoltzsche.github.com/v1/chartrenderer && \
-    wget -O- https://github.com/mgoltzsche/helm-kustomize-plugin/releases/v0.9.0-beta/download/helm-kustomize-plugin > /root/.config/kustomize/plugin/helm.kustomize.mgoltzsche.github.com/v1/chartrenderer/ChartRenderer && \
+    wget -O- https://github.com/mgoltzsche/helm-kustomize-plugin/releases/download/${KUSTIMIZE_HELM_PLUGIN}/helm-kustomize-plugin > /root/.config/kustomize/plugin/helm.kustomize.mgoltzsche.github.com/v1/chartrenderer/ChartRenderer && \
     chmod u+x /root/.config/kustomize/plugin/helm.kustomize.mgoltzsche.github.com/v1/chartrenderer/ChartRenderer
 
 FROM alpine:3.12.0
