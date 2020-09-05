@@ -1,6 +1,6 @@
 FROM alpine:3.12.0 as fetcher
 
-ARG KUSTOMIZE_VERSION=v3.8.1
+ARG KUSTOMIZE_VERSION=v3.8.2
 ARG KUSTIMIZE_HELM_PLUGIN=v0.9.0-beta
 
 RUN wget -O- https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/${KUSTOMIZE_VERSION}/kustomize_${KUSTOMIZE_VERSION}_linux_amd64.tar.gz | tar xvz -C /usr/local/bin/
